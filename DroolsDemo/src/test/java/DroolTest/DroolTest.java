@@ -12,13 +12,19 @@ public class DroolTest {
     }
     public void executeBusinessRule(){
         try{
-            KieContainer kc = KieServices.Factory.get().getKieClasspathContainer();
+            KieServices kieServices = KieServices.Factory.get();
+            KieContainer kc = kieServices.getKieClasspathContainer();
 
-            KieSession ksession = kc.newKieSession("hola");
-            ksession.insert( new PaymentOffer("phonepe") );
-            ksession.fireAllRules();
-            ksession.dispose(); // Stateful rule session must always be disposed when finished
-            //System.out.println("The cashback for this payment channel VIA KIE"+my_payment_offer.getChannel());
+            KieSession ksession = kc.newKieSession("exampleKS");
+            if(ksession==null){
+                System.out.println("La sesión es nula.");
+            }else {
+                System.out.println("La sesión no es nula.");
+                ksession.insert(new PaymentOffer("phonepe"));
+                ksession.fireAllRules();
+                ksession.dispose(); // Stateful rule session must always be disposed when finished
+                //System.out.println("The cashback for this payment channel VIA KIE"+my_payment_offer.getChannel());
+            }
 
         } catch (Exception e){
         e.printStackTrace ();}
