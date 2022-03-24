@@ -1,6 +1,6 @@
 package DroolTest;
 
-import org.drools.DroolsDemo.PaymentOffer;
+import org.drools.DroolsDemo.Paciente;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -20,10 +20,26 @@ public class DroolTest {
                 System.out.println("La sesión es nula.");
             }else {
                 System.out.println("La sesión no es nula.");
-                ksession.insert(new PaymentOffer("phonepe"));
+
+
+                Paciente p1= new Paciente();
+                p1.setTemperatura(39);
+                p1.setT(Paciente.Tos.no_productiva);
+                p1.setCansancio(true);
+                p1.setContacto_con_positivo(true);
+                p1.setDisnea(true);
+                p1.setDolor_cabeza(true);
+                p1.setDolor_garganta(true);
+
+
+
+                ksession.insert(p1);
                 ksession.fireAllRules();
                 ksession.dispose(); // Stateful rule session must always be disposed when finished
                 //System.out.println("The cashback for this payment channel VIA KIE"+my_payment_offer.getChannel());
+
+                System.out.println("la probabilidad de covid es: " + p1.getDiagnostico().getProbabilidad());
+
             }
 
         } catch (Exception e){

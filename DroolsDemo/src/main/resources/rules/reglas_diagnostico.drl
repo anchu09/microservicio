@@ -1,0 +1,121 @@
+package rules;
+import org.drools.DroolsDemo.Paciente;
+
+
+rule "check_fiebre" dialect  "mvel"
+    when
+        mi_paciente: Paciente(temperatura>37.5)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+75*100/810);
+    end
+rule "check_tos" dialect  "mvel"
+           when
+               mi_paciente: Paciente(tos==tos.no_productiva)
+           then
+               mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+85*100/810);
+           end
+
+rule "check_cansancio" dialect  "mvel"
+    when
+        mi_paciente: Paciente(cansancio==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+65*100/810);
+    end
+
+rule "check_perdida_gusto_olfato" dialect  "mvel"
+    when
+        mi_paciente: Paciente(perdida_gusto_olfato==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+80*100/810);
+    end
+
+rule "check_disnea" dialect  "mvel"
+    when
+        mi_paciente: Paciente(disnea==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+75*100/810);
+    end
+
+rule "check_hipoxia" dialect  "mvel"
+    when
+        mi_paciente: Paciente(hipoxia==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+70*100/810);
+    end
+
+rule "check_dolor_garganta" dialect  "mvel"
+    when
+        mi_paciente: Paciente(dolor_garganta==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+40*100/810);
+    end
+
+rule "check_dolor_cabeza" dialect  "mvel"
+    when
+        mi_paciente: Paciente(dolor_cabeza==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+45*100/810);
+    end
+
+rule "check_diarrea" dialect  "mvel"
+    when
+        mi_paciente: Paciente(diarrea==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+5*100/810);
+    end
+
+rule "check_erupcion_cutanea" dialect  "mvel"
+    when
+        mi_paciente: Paciente(erupcion_cutanea==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+10*100/810);
+    end
+
+rule "check_ojos_rojos" dialect  "mvel"
+    when
+        mi_paciente: Paciente(ojos_rojos==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+15*100/810);
+    end
+
+rule "check_perdida_movilidad" dialect  "mvel"
+    when
+        mi_paciente: Paciente(perdida_movilidad==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+10*100/810);
+    end
+
+rule "check_dolor_pecho" dialect  "mvel"
+    when
+        mi_paciente: Paciente(dolor_pecho==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+20*100/810);
+    end
+
+rule "check_viaje_zona_afectada" dialect  "mvel"
+    when
+        mi_paciente: Paciente(viaje_zona_afectada==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+65*100/810);
+    end
+
+rule "check_contacto_con_positivo" dialect  "mvel"
+    when
+        mi_paciente: Paciente(contacto_con_positivo==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+75*100/810);
+    end
+
+rule "check_infiltraciones_pulmonares" dialect  "mvel"
+    when
+        mi_paciente: Paciente(infiltraciones_pulmonares==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+60*100/810);
+    end
+
+rule "check_pcr_positiva" dialect  "mvel"
+    when
+        mi_paciente: Paciente(pcr_positiva==true)
+    then
+        mi_paciente.getDiagnostico().setProbabilidad(mi_paciente.getDiagnostico().getProbabilidad()+80*100/810);
+    end
